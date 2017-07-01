@@ -2,4 +2,4 @@
 import math
 
 area = input('Enter area: ')
-print(int(math.sqrt(int(area))) * 4)
+print(math.sqrt(int(area)) * 4)
