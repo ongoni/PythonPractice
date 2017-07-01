@@ -4,10 +4,10 @@ def sum(e):
     i = 1
     while True:
         t = 1 / (i ** 2)
-        s += t
-        i += 1
         if t < e:
             break
+        s += t
+        i += 1
     return s
 
 e = float(input('enter e: '))
