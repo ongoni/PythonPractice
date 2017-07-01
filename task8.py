@@ -1,4 +1,4 @@
-#p.59, I, 1)
+# p.59, I, 1)
 n = int(input('enter n: '))
 
 s = 0

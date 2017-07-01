@@ -1,4 +1,4 @@
-#p.44, VI, 1)
+# p.44, VI, 1)
 def func(x):
     if x >= 0.9:
         return 1.0 / (0.1 + x) ** 2
