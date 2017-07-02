@@ -109,7 +109,7 @@ def p30_1():
         else:
             return a
 
-    x, y = map(int, input('enter a and b: ').split())
+    x, y = map(int, input('enter x and y: ').split())
 
     print(str(min(3 * x, 2 * y) + min(x - y, x + y)))
 
