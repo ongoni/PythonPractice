@@ -91,15 +91,26 @@ def p88_II_1():
 
     print(len(list(filter(lambda x: x == m, a))))
 
-# p21_II_1()
-# p21_III_1()
-# p44_I_1()
-# p44_III_1()
-# p44_IV_1()
-# p44_V_1()
-# p44_VI_1()
-# p59_I_1()
-# p59_II_1()
-# p59_III_1()
-# p88_I_1()
-# p88_II_1()
+def p88_V_1():
+    a = list(int(e) for e in input('enter the array: ').split())
+
+    print(*filter(lambda x: x % 2 != 0, a))
+
+def p30_1():
+    def max(a, b):
+        if a > b or a == b:
+            return a
+        else:
+            return b
+
+    def min(a, b):
+        if a > b or a == b:
+            return b
+        else:
+            return a
+
+    x, y = map(int, input('enter a and b: ').split())
+
+    print(str(min(3 * x, 2 * y) + min(x - y, x + y)))
+
+p30_1()
