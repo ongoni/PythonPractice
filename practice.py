@@ -67,11 +67,10 @@ def p59_II_1():
 
 def p59_III_1():
     def sum(e):
-        s = 0
-        i = 1
+        s, i = 0, 1
         while True:
             t = 1 / (i ** 2)
-            if t < e:
+            if abs(t) < e:
                 break
             s += t
             i += 1
@@ -79,7 +78,16 @@ def p59_III_1():
 
     e = float(input('enter e: '))
 
-    print(sum(e))
+    reduce_result = reduce(
+        lambda s, x:
+            (s + 1.0 / pow(x, 2)) if 1.0 / pow(x, 2) >= e
+            else s + 0,
+        range(1, 10000),
+        0
+    )
+
+    print('simple function: ' + str(sum(e)))
+    print('reduce: ' + str(reduce_result))
 
 def p88_I_1():
     a = list(int(e) for e in input('enter the array: ').split())
@@ -147,7 +155,8 @@ def p24_II_1():
         lambda res, x:
             res + x + to_insert if x == to_find
             else res + x,
-            line, ''
+        line,
+        ''
     )
 
     print(result)
@@ -158,4 +167,4 @@ def p24_III_1():
 
     print(len(list(filter(lambda x: x == word_to_find, text))))
 
-p24_III_1()
+p59_III_1()
