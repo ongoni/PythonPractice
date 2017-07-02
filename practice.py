@@ -113,4 +113,27 @@ def p30_1():
 
     print(str(min(3 * x, 2 * y) + min(x - y, x + y)))
 
-p30_1()
+def p37_I_1():
+    def isPrime(x):
+        if x % 2 == 0:
+            return x == 2
+        d = 3
+        while d * d <= x and x % d != 0:
+            d += 2
+        return d * d > x
+
+    a, b = map(int, input('enter a and b: ').split())
+    print(*filter(isPrime, range(a, b + 1)))
+
+def p37_II_1():
+    def b(n):
+        if n == 1:
+            return -10
+        elif n == 2:
+            return 2
+        else:
+            return abs(b(n - 2)) - 6 * b(n - 1)
+
+    n = int(input('enter n: '))
+    print(b(n))
+
