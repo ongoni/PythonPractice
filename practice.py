@@ -153,9 +153,9 @@ def p24_II_1():
     print(result)
 
 def p24_III_1():
-    text = re.findall(r'\b\w+\b', input('enter text: '))
+    text = re.findall(r'\b[a-z]+|[0-9]+\b', input('enter text: '))
     word_to_find = input('enter word to find: ')
 
     print(len(list(filter(lambda x: x == word_to_find, text))))
 
-
+p24_III_1()
