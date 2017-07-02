@@ -80,6 +80,17 @@ def p59_III_1():
 
     print(sum(e))
 
+def p88_I_1():
+    a = list(int(e) for e in input('enter the array: ').split())
+
+    print(*map(lambda x: -abs(x), a))
+
+def p88_II_1():
+    a = list(int(e) for e in input('enter the array: ').split())
+    m = max(a)
+
+    print(len(list(filter(lambda x: x == m, a))))
+
 # p21_II_1()
 # p21_III_1()
 # p44_I_1()
@@ -90,3 +101,5 @@ def p59_III_1():
 # p59_I_1()
 # p59_II_1()
 # p59_III_1()
+# p88_I_1()
+# p88_II_1()
