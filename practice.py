@@ -1,4 +1,5 @@
 import math
+import re
 from functools import reduce
 
 def p21_II_1():
@@ -136,4 +137,25 @@ def p37_II_1():
 
     n = int(input('enter n: '))
     print(b(n))
+
+def p24_II_1():
+    line = input('enter line: ')
+    to_find = input('enter symbol to find: ')
+    to_insert = input('enter symbol to insert: ')
+
+    result = reduce(
+        lambda res, x:
+            res + x + to_insert if x == to_find
+            else res + x,
+            line, ''
+    )
+
+    print(result)
+
+def p24_III_1():
+    text = re.findall(r'\b\w+\b', input('enter text: '))
+    word_to_find = input('enter word to find: ')
+
+    print(len(list(filter(lambda x: x == word_to_find, text))))
+
 
