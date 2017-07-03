@@ -89,6 +89,8 @@ def p59_III_1():
     print('simple function: ' + str(sum(e)))
     print('reduce: ' + str(reduce_result))
 
+# Start here
+
 def p88_I_1():
     a = list(int(e) for e in input('enter the array: ').split())
 
@@ -162,9 +164,16 @@ def p24_II_1():
     print(result)
 
 def p24_III_1():
-    text = re.findall(r'\b[a-z]+|[0-9]+\b', input('enter text: '))
+    text = re.findall(r'\b[a-z]+|[а-я]+|[0-9]+\b', input('enter text: '))
     word_to_find = input('enter word to find: ')
 
     print(len(list(filter(lambda x: x == word_to_find, text))))
 
-p59_III_1()
+# p88_I_1()
+# p88_II_1()
+# p88_V_1()
+# p30_1()
+# p37_I_1()
+# p37_II_1()
+# p24_II_1()
+# p24_III_1()
