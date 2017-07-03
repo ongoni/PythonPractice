@@ -89,15 +89,13 @@ def p59_III_1():
     print('simple function: ' + str(sum(e)))
     print('reduce: ' + str(reduce_result))
 
-# Start here
-
 def p88_I_1():
     a = list(int(e) for e in input('enter the array: ').split())
 
     print(*map(lambda x: -abs(x), a))
 
 def p88_II_1():
-    a = list(int(e) for e in input('enter the array: ').split())
+    a = list(float(e) for e in input('enter the array: ').split())
     m = max(a)
 
     print(len(list(filter(lambda x: x == m, a))))
@@ -109,16 +107,14 @@ def p88_V_1():
 
 def p30_1():
     def max(a, b):
-        if a > b or a == b:
+        if a >= b:
             return a
-        else:
-            return b
+        return b
 
     def min(a, b):
-        if a > b or a == b:
+        if a >= b:
             return b
-        else:
-            return a
+        return a
 
     x, y = map(int, input('enter x and y: ').split())
 
