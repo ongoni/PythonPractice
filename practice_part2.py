@@ -1,4 +1,5 @@
 import random
+import re
 from functools import reduce
 
 def t1_1():
@@ -57,9 +58,48 @@ def t6_1():
     print(*(a & b))
     print(reduce(lambda res, x: res + x, a & b, 0))
 
-# t1_1()
-# t2_1()
-# t3_1()
-# t4_1()
-# t5_1()
-# t6_1()
+def t1():
+    l = list(input('enter list elements: ').split())
+
+    d = dict(zip(l, range(len(l))))
+    print(*d.items())
+
+def t2():
+    line = input('enter line: ').split()
+    d = { 'lol' : 'kek', 'kek' : 'lol'}
+
+    result = reduce(
+        lambda res, x:
+            res + [d[x]] if x in d
+            else res + [x],
+        line,
+        []
+    )
+
+    print(result)
+
+def t3():
+    l = reduce(lambda a, x: a + [random.randrange(-50, 51)], range(20), [])
+
+    first_max = max(l)
+    second_max = max(list(filter(lambda x: x != first_max, l)))
+    third_max = max(list(filter(lambda x: x != first_max and x != second_max, l)))
+
+    print(*l)
+    print('first max - ' + str(first_max))
+    print('second max - ' + str(second_max))
+    print('third max - ' + str(third_max))
+
+def t4():
+    text = re.findall(r'\b[A-Z]?[a-z]+|[А-Я]?[а-я]+\b', input('enter text: '))
+    d = {}.fromkeys(text, 0)
+
+    for element in text:
+        d[element] += 1
+
+    print(*d.items())
+
+# t1()
+# t2()
+# t3()
+t4()
