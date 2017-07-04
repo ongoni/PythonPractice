@@ -99,7 +99,3 @@ def t4():
 
     print(*d.items())
 
-# t1()
-# t2()
-# t3()
-t4()

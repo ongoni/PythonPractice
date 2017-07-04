@@ -165,11 +165,3 @@ def p24_III_1():
 
     print(len(list(filter(lambda x: x == word_to_find, text))))
 
-# p88_I_1()
-# p88_II_1()
-# p88_V_1()
-# p30_1()
-# p37_I_1()
-# p37_II_1()
-# p24_II_1()
-# p24_III_1()
