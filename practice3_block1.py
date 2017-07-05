@@ -1,11 +1,9 @@
 import numpy
-from  functools import reduce
 
 def t1_1():
     def get_element_w_zero_before(vec):
         prev_is_zero = False
         result = []
-        size = len(vec)
         for i in range(len(vec)):
             if prev_is_zero:
                 result.append(vec[i])
@@ -39,7 +37,7 @@ def t1_1():
     print('5. 8x2 matrix: ', c)
 
     print('6. matrix multipying by scalar: ')
-    scalar = 2 # int(input('enter scalar: '))
+    scalar = int(input('enter scalar: '))
     c = c.dot(scalar)
     print(c)
 
