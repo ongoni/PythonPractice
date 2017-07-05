@@ -17,7 +17,6 @@ def t2_1():
     print(max(a[:, index]))
 
 def t2_6():
-    # reduce(lambda a, x: a + [max(ar[:, x])], range(ar.shape[1]), [])
     n, m = map(int, input('enter n and m: ').split())
     ar = reduce(lambda res, x: res + [random.randrange(-50, 101) + random.random()], range(n * m), [])
     a = numpy.array(ar).reshape(n, m)
@@ -27,4 +26,8 @@ def t2_6():
     a = numpy.concatenate((a, b), 0)
     print(a)
 
+def t2_11():
+    n, m, l = map(int, input('enter n, m and l: ').split())
+    ar = reduce(lambda res, x: res + [random.randrange(-50, 101) + random.random()], range(n * m), [])
+    a = numpy.array(ar).reshape(n, m)
 
