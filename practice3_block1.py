@@ -53,4 +53,3 @@ def t1_1():
         res *= b[i, j]
     print('10. result of multiplying elements from main giagonal: ', res)
 
-t1_1()
