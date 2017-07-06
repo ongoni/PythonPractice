@@ -100,4 +100,3 @@ def t2_26():
           sum(sum(fourth)) /
           (fourth.shape[0] * fourth.shape[1]))
 
-

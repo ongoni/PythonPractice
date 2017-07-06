@@ -1,4 +1,5 @@
 import pandas
+import numpy
 
 def block1():
     df = pandas.read_csv('titanic.csv')
@@ -26,6 +27,38 @@ def block1():
           '% of passengers were children')
 
 def block2():
-    a, b, h = map(int, input('enter a, b abd h: ').split())
+    def f(x):
+        if x >= 0.9:
+            return 1.0 / (0.1 + x) ** 2
+        elif x >= 0:
+            return 0.2 * x + 0.1
+        else:
+            return x ** 2 + 0.2
+
+    a, b = map(int, input('enter a and b: ').split())
+    h = float(input('enter h: '))
+
+    table = pandas.DataFrame({
+        'x' : numpy.arange(a, b, h),
+        'f(x)' : [round(f(e), 3) for e in numpy.arange(a, b, h)]
+    })
+
+    print(table)
+
+    table.loc[len(table)] = [round((f(b + 1)), 3), b + 1]
+
+    print(table)
+
+    table.drop(0, axis = 0, inplace = True)
+
+    print(table)
+
+    table = table[table.x >= (b // 2)]
+
+    print(table)
+
+    table.to_csv('my_own_table.csv')
+
+    print(pandas.read_csv('my_own_table.csv'))
 
 block2()

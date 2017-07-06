@@ -48,7 +48,8 @@ def p44_VI_1():
         else:
             return x ** 2 + 0.2
 
-    a, b, h = map(float, input('enter a, b and h: ').split())
+    a, b = map(float, input('enter a and b: ').split())
+    h = float(input('enter h: '))
 
     while a <= b:
         print(f(a))
@@ -166,3 +167,4 @@ def p24_III_1():
 
     print(len(list(filter(lambda x: x == word_to_find, text))))
 
+p44_VI_1()
