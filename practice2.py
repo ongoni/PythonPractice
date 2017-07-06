@@ -86,12 +86,13 @@ def t3():
     third_max = max(list(filter(lambda x: x != first_max and x != second_max, l)))
 
     print(*l)
-    print('first max - ' + str(first_max))
+    print('first max - ', first_max)
     print('second max - ' + str(second_max))
     print('third max - ' + str(third_max))
 
 def t4():
-    text = re.findall(r'\b[A-Z]?[a-z]+|[А-Я]?[а-я]+\b', input('enter text: '))
+    text = re.findall(r'\b[A-Z]?[a-z]+\b|\b[A-Z]\b|\b[А-ЯЁ]\b|\b[А-ЯЁ]?[а-яё]+\b|\b[A-Z]+\b|\b[А-ЯЁ]+\b',
+                      input('enter text: '))
     d = {}.fromkeys(text, 0)
 
     for element in text:

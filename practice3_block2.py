@@ -37,7 +37,7 @@ def t2_11():
 
     print(a)
 
-    for i in range(len(a[:, 0])):
+    for i in range(n):
         a[i] += a[l]
 
     print(a)
@@ -60,10 +60,10 @@ def t2_21():
 
     print(a)
 
-    min_rank = min((n, m))
-    for i, j in zip(range(min_rank - 1), range(min_rank - 1)):
-        half_sum = (a[i + 1, j] + a[i, j + 1]) / 2
-        a[i + 1, j], a[i, j + 1] = half_sum, half_sum
+    min_dim = min((n, m))
+    for i in range(min_dim - 1):
+        half_sum = (a[i + 1, i] + a[i, i + 1]) / 2
+        a[i + 1, i] = a[i, i + 1] = half_sum
 
     print(a)
 
@@ -76,29 +76,28 @@ def t2_26():
 
     l, k = map(int, input('enter l and k: ').split())
 
-    split = numpy.hsplit(a, (0, l))
-    first_and_second = numpy.vsplit(split[1], (0, k))
-    list.__delitem__(first_and_second, 0)
-    third_and_fourth = numpy.vsplit(split[2], (0, k))
-    list.__delitem__(third_and_fourth, 0)
-
-    print(*first_and_second[0], sep = '\n', end = '\n')
+    first = a[:l, :k]
+    print(first, sep = '\n', end = '\n')
     print('average in first part: ',
-          sum(sum(first_and_second[0])) /
-          (first_and_second[0].shape[0] * first_and_second[0].shape[1]))
+          sum(sum(first)) /
+          (first.shape[0] * first.shape[1]))
 
-    print(*first_and_second[1], sep = '\n', end = '\n')
+    second = a[:l, k:]
+    print(second, sep = '\n', end = '\n')
     print('average in second part: ',
-          sum(sum(first_and_second[1])) /
-          (first_and_second[1].shape[0] * first_and_second[1].shape[1]))
+          sum(sum(second)) /
+          (second.shape[0] * second.shape[1]))
 
-    print(*third_and_fourth[0], sep = '\n', end = '\n')
+    third = a[l:, :k]
+    print(third, sep = '\n', end = '\n')
     print('average in third part: ',
-          sum(sum(third_and_fourth[0])) /
-          (third_and_fourth[0].shape[0] * third_and_fourth[0].shape[1]))
+          sum(sum(third)) /
+          (third.shape[0] * third.shape[1]))
 
-    print(*third_and_fourth[1], sep = '\n', end = '\n')
+    fourth = a[l:, k:]
+    print(fourth, sep = '\n', end = '\n')
     print('average in fourth part: ',
-          sum(sum(third_and_fourth[1])) /
-          (third_and_fourth[1].shape[0] * third_and_fourth[1].shape[1]))
+          sum(sum(fourth)) /
+          (fourth.shape[0] * fourth.shape[1]))
+
 
