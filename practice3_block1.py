@@ -51,7 +51,7 @@ def t1_1():
         v = numpy.array(a.reshape(1, a.shape[0] * a.shape[1]))[0].tolist()
         print('9. maximum in elements which have 0 before it: ', max(get_element_w_zero_before(v)))
 
-    def t10():
+    def t10(a):
         result = 1
         for i in range(a.shape[0]):
             result *= a[i, i]
@@ -70,4 +70,4 @@ def t1_1():
     t7(c)
     t8(c)
     t9(a)
-    t10()
+    t10(a)
