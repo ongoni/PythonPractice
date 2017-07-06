@@ -42,23 +42,18 @@ def block2():
         'x' : numpy.arange(a, b, h),
         'f(x)' : [round(f(e), 3) for e in numpy.arange(a, b, h)]
     })
-
     print(table)
 
     table.loc[len(table)] = [round((f(b + 1)), 3), b + 1]
-
     print(table)
 
     table.drop(0, axis = 0, inplace = True)
-
     print(table)
 
     table = table[table.x >= (b // 2)]
-
     print(table)
 
     table.to_csv('my_own_table.csv')
-
-    print(pandas.read_csv('my_own_table.csv'))
+    print('table loaded from created file:\n', pandas.read_csv('my_own_table.csv', index_col = 0))
 
 block2()
