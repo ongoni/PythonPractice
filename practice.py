@@ -22,7 +22,7 @@ class MatrixHelper:
         return [[random.randint(-50, 50) for i in range(second_dimension)] for j in range(first_dimension)]
 
     @staticmethod
-    def concatenate(first_matrix, second_matrix, axis = 0):
+    def concatenate(first_matrix: list, second_matrix: list, axis = 0):
         if len(first_matrix[0]) == len(second_matrix[0]) and axis == 0:
             result = copy.deepcopy(first_matrix)
             for i in range(len(second_matrix)):
@@ -502,7 +502,7 @@ class Practice:
             table.loc[len(table)] = [round((f(b + 1)), 3), b + 1]
             print(table)
 
-            table.drop(0, axis=0, inplace=True)
+            table.drop(0, axis = 0, inplace = True)
             print(table)
 
             table = table[table.x >= (b // 2)]
@@ -528,29 +528,59 @@ class Practice:
             pylab.plot(x_values, y_values)
             pylab.show()
 
-t1 = list(MatrixHelper.fill_matrix_with_random(1000, 1000, -50, 50))
-t2 = list(MatrixHelper.fill_matrix_with_random(1000, 1000, -50, 0))
+        def final_task(self):
+            def get_my_concatenate_time(first_matrix: list, second_matrix: list, axis = 0):
+                start = time.time()
+                MatrixHelper.concatenate(first_matrix, second_matrix, axis = axis)
+                stop = time.time()
+                return stop - start
 
-start = time.time()
-r1 = MatrixHelper.concatenate(t1, t2, axis = 0)
-# print(r1)
-stop = time.time()
-print(stop - start)
+            def get_numpy_concatenate_time(first_matrix: list, second_matrix: list, axis = 0):
+                start = time.time()
+                numpy.concatenate((first_matrix, second_matrix), axis = axis)
+                stop = time.time()
+                return stop - start
 
-start = time.time()
-r2 = numpy.concatenate((t1, t2), 0)
-# print(*r2)
-stop = time.time()
-print(stop - start)
+            def get_operation_time(first_dimension: int, second_dimension: int):
+                first_matrix = list(MatrixHelper.fill_matrix_with_random(first_dimension, second_dimension, -50, 50))
+                second_matrix = list(MatrixHelper.fill_matrix_with_random(first_dimension, second_dimension, -50, 0))
 
-start = time.time()
-r3 = MatrixHelper.concatenate(t1, t2, axis = 1)
-# print(r3)
-stop = time.time()
-print(stop - start)
+                return ([
+                    round(get_my_concatenate_time(first_matrix, second_matrix, axis = 0), 6),
+                    round(get_numpy_concatenate_time(first_matrix, second_matrix, axis = 0), 6),
+                    round(get_my_concatenate_time(first_matrix, second_matrix, axis = 1), 6),
+                    round(get_numpy_concatenate_time(first_matrix, second_matrix, axis = 1), 6)]
+                )
 
-start = time.time()
-r4 = numpy.concatenate((t1, t2), 1)
-# print(*r4)
-stop = time.time()
-print(stop - start)
+            first = []
+            for i in range(50):
+                first.append(get_operation_time(50, 50))
+            print(*first)
+
+            table = pandas.DataFrame({
+                'dimensions' : '50x50',
+                'numpy as columns' : [e[3] for e in first],
+                'my as columns' : [e[2] for e in first],
+                'numpy as rows' : [e[1] for e in first],
+                'my as rows' : [e[0] for e in first]
+            })
+
+            second = []
+            for i in range(50):
+                second.append(get_operation_time(200, 200))
+            print(*second)
+
+            for e in second:
+                e.append('200x200')
+            table.append(pandas.DataFrame(second, columns = table.columns))
+
+            third = []
+            for i in range(50):
+                third.append(get_operation_time(500, 500))
+            print(*third)
+
+            for e in third:
+                e.append('500x500')
+            table.append(pandas.DataFrame(third, columns = table.columns))
+
+Practice.Part5.final_task(Practice.Part5)
