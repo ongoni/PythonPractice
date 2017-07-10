@@ -1,6 +1,7 @@
 import math
 import re
 import copy
+import time
 import random
 import numpy
 import pandas
@@ -11,9 +12,14 @@ from functools import reduce
 
 class MatrixHelper:
     @staticmethod
-    def fill_matrix_with_random(first_dimension: int, second_dimension: int,
-                                start: int, stop: int):
+    def fill_numpy_matrix_with_random(first_dimension: int, second_dimension: int,
+                                      start: int, stop: int):
         return numpy.array(numpy.random.random_integers(start, stop, (first_dimension, second_dimension)))
+
+    @staticmethod
+    def fill_matrix_with_random(first_dimension: int, second_dimension: int,
+                                      start: int, stop: int):
+        return [[random.randint(-50, 50) for i in range(second_dimension)] for j in range(first_dimension)]
 
     @staticmethod
     def concatenate(first_matrix, second_matrix, axis = 0):
@@ -307,7 +313,7 @@ class Practice:
 
         class Block1:
             def task1(self):
-                print(MatrixHelper.fill_matrix_with_random(4, 4, -50, 50))
+                print(MatrixHelper.fill_numpy_matrix_with_random(4, 4, -50, 50))
 
             def task2(self, matrix):
                 print('2. element with indexes [2, 3]: ', matrix[2, 3])
@@ -364,7 +370,7 @@ class Practice:
 
             def task1(self):
                 n, m = map(int, input('enter n and m: ').split())
-                a = MatrixHelper.fill_matrix_with_random(n, m, -50, 100)
+                a = MatrixHelper.fill_numpy_matrix_with_random(n, m, -50, 100)
                 print(a)
 
                 maximum, index = a[0, 0], 0
@@ -377,7 +383,7 @@ class Practice:
 
             def task6(self):
                 n, m = map(int, input('enter n and m: ').split())
-                a = MatrixHelper.fill_matrix_with_random(n, m, -50, 100)
+                a = MatrixHelper.fill_numpy_matrix_with_random(n, m, -50, 100)
                 print(a, end='\n\n')
 
                 sum_of_columns, sum_of_all = sum(a), sum(sum(a))
@@ -388,7 +394,7 @@ class Practice:
 
             def task11(self):
                 n, m, l = map(int, input('enter n, m and l: ').split())
-                a = MatrixHelper.fill_matrix_with_random(n, m, -50, 100)
+                a = MatrixHelper.fill_numpy_matrix_with_random(n, m, -50, 100)
                 print(a)
 
                 for i in range(n):
@@ -398,7 +404,7 @@ class Practice:
 
             def task16(self):
                 n, m = map(int, input('enter n and m: ').split())
-                a = MatrixHelper.fill_matrix_with_random(n, m, -50, 100)
+                a = MatrixHelper.fill_numpy_matrix_with_random(n, m, -50, 100)
                 print(a, end='\n\n')
 
                 l = int(input('enter l: '))
@@ -407,7 +413,7 @@ class Practice:
 
             def task21(self):
                 n, m = map(int, input('enter n and m: ').split())
-                a = MatrixHelper.fill_matrix_with_random(n, m, -50, 100)
+                a = MatrixHelper.fill_numpy_matrix_with_random(n, m, -50, 100)
                 print(a)
 
                 min_dim = min((n, m))
@@ -419,7 +425,7 @@ class Practice:
 
             def task26(self):
                 n, m = map(int, input('enter n and m: ').split())
-                a = MatrixHelper.fill_matrix_with_random(n, m, -50, 100)
+                a = MatrixHelper.fill_numpy_matrix_with_random(n, m, -50, 100)
                 print(a)
 
                 l, k = map(int, input('enter l and k: ').split())
@@ -488,8 +494,8 @@ class Practice:
             h = float(input('enter h: '))
 
             table = pandas.DataFrame({
-                'x': numpy.arange(a, b, h),
-                'f(x)': [round(f(e), 3) for e in numpy.arange(a, b, h)]
+                'x': numpy.arange(a, b + h, h),
+                'f(x)': [round(f(e), 3) for e in numpy.arange(a, b + h, h)]
             })
             print(table)
 
@@ -522,8 +528,29 @@ class Practice:
             pylab.plot(x_values, y_values)
             pylab.show()
 
-a = [[1, 2, 3], [4, 5, 6]]
-b = [[7, 8, 9]]
-c = [[6, 5, 4], [3, 2, 1]]
-print(*MatrixHelper.concatenate(a, b, axis = 0))
-print(*MatrixHelper.concatenate(a, c, axis = 1))
+t1 = list(MatrixHelper.fill_matrix_with_random(1000, 1000, -50, 50))
+t2 = list(MatrixHelper.fill_matrix_with_random(1000, 1000, -50, 0))
+
+start = time.time()
+r1 = MatrixHelper.concatenate(t1, t2, axis = 0)
+# print(r1)
+stop = time.time()
+print(stop - start)
+
+start = time.time()
+r2 = numpy.concatenate((t1, t2), 0)
+# print(*r2)
+stop = time.time()
+print(stop - start)
+
+start = time.time()
+r3 = MatrixHelper.concatenate(t1, t2, axis = 1)
+# print(r3)
+stop = time.time()
+print(stop - start)
+
+start = time.time()
+r4 = numpy.concatenate((t1, t2), 1)
+# print(*r4)
+stop = time.time()
+print(stop - start)
