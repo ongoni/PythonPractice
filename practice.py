@@ -509,7 +509,7 @@ class Practice:
             print(table)
 
             table.to_csv('my_own_table.csv')
-            print('table loaded from created file:\n', pandas.read_csv('my_own_table.csv', index_col=0))
+            print('table loaded from created file:\n', pandas.read_csv('my_own_table.csv', index_col = 0))
 
     class Part5:
 
@@ -594,3 +594,30 @@ class Practice:
             result = pandas.concat([first_table, second_table, third_table], ignore_index = True)
             pandas.DataFrame(result).to_csv('statistics.csv')
 
+        def show_first_plot(self):
+            table = pandas.read_csv('statistics.csv', index_col = 0)
+            x_values = mlab.frange(1, 50, 1)
+            my_y_values = table.loc[0:49]['my as rows']
+            numpy_y_values = table.loc[0:49]['numpy as rows']
+            pylab.plot(x_values, my_y_values, x_values, numpy_y_values)
+            pylab.show()
+
+        def show_second_plot(self):
+            table = pandas.read_csv('statistics.csv', index_col=0)
+            x_values = mlab.frange(51, 100, 1)
+            my_y_values = table.loc[50:99]['my as rows']
+            numpy_y_values = table.loc[50:99]['numpy as rows']
+            pylab.plot(x_values, my_y_values, x_values, numpy_y_values)
+            pylab.show()
+
+        def show_third_plot(self):
+            table = pandas.read_csv('statistics.csv', index_col=0)
+            x_values = mlab.frange(101, 150, 1)
+            my_y_values = table.loc[100:149]['my as rows']
+            numpy_y_values = table.loc[100:149]['numpy as rows']
+            pylab.plot(x_values, my_y_values, x_values, numpy_y_values)
+            pylab.show()
+
+Practice.Part5.show_first_plot(Practice.Part5)
+Practice.Part5.show_second_plot(Practice.Part5)
+Practice.Part5.show_third_plot(Practice.Part5)
