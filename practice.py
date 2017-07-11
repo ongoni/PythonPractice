@@ -6,6 +6,7 @@ import random
 import numpy
 import pandas
 import pylab
+from matplotlib import patches
 from matplotlib import mlab
 from functools import reduce
 
@@ -601,21 +602,31 @@ class Practice:
             pylab.xlabel('№')
             pylab.ylabel('Execution time')
             pylab.plot(x_values, table.loc[0:49]['my as rows'], '#ff0000')
+            my_rows_patch = patches.Patch(color = '#ff0000', label = 'my as rows')
             pylab.plot(x_values, table.loc[0:49]['my as columns'], '#00ff00')
+            my_columns_patch = patches.Patch(color = '#00ff00', label = 'my as columns')
             pylab.plot(x_values, table.loc[0:49]['numpy as rows'], '#ff00ff')
+            numpy_rows_patch = patches.Patch(color = '#ff00ff', label = 'numpy as rows')
             pylab.plot(x_values, table.loc[0:49]['numpy as columns'], '#0000ff')
+            numpy_columns_patch = patches.Patch(color = '#0000ff', label = 'numpy as columns')
+            pylab.legend(handles = [my_rows_patch, my_columns_patch, numpy_rows_patch, numpy_columns_patch])
             pylab.show()
 
         def show_second_plot(self):
             table = pandas.read_csv('statistics.csv', index_col=0)
             x_values = mlab.frange(51, 100, 1)
-            pylab.title('50x50 matrix')
+            pylab.title('200x200 matrix')
             pylab.xlabel('№')
             pylab.ylabel('Execution time')
             pylab.plot(x_values, table.loc[50:99]['my as rows'], '#ff0000')
+            my_rows_patch = patches.Patch(color = '#ff0000', label = 'my as rows')
             pylab.plot(x_values, table.loc[50:99]['my as columns'], '#00ff00')
+            my_columns_patch = patches.Patch(color = '#00ff00', label = 'my as columns')
             pylab.plot(x_values, table.loc[50:99]['numpy as rows'], '#ff00ff')
+            numpy_rows_patch = patches.Patch(color = '#ff00ff', label = 'numpy as rows')
             pylab.plot(x_values, table.loc[50:99]['numpy as columns'], '#0000ff')
+            numpy_columns_patch = patches.Patch(color = '#0000ff', label = 'numpy as columns')
+            pylab.legend(handles = [my_rows_patch, my_columns_patch, numpy_rows_patch, numpy_columns_patch])
             pylab.show()
 
         def show_third_plot(self):
@@ -625,9 +636,14 @@ class Practice:
             pylab.xlabel('№')
             pylab.ylabel('Execution time')
             pylab.plot(x_values, table.loc[100:149]['my as rows'], '#ff0000')
+            my_rows_patch = patches.Patch(color = '#ff0000', label = 'my as rows')
             pylab.plot(x_values, table.loc[100:149]['my as columns'], '#00ff00')
+            my_columns_patch = patches.Patch(color = '#00ff00', label = 'my as columns')
             pylab.plot(x_values, table.loc[100:149]['numpy as rows'], '#ff00ff')
+            numpy_rows_patch = patches.Patch(color = '#ff00ff', label = 'numpy as rows')
             pylab.plot(x_values, table.loc[100:149]['numpy as columns'], '#0000ff')
+            numpy_columns_patch = patches.Patch(color = '#0000ff', label = 'numpy as columns')
+            pylab.legend(handles = [my_rows_patch, my_columns_patch, numpy_rows_patch, numpy_columns_patch])
             pylab.show()
 
 Practice.Part5.show_first_plot(Practice.Part5)
