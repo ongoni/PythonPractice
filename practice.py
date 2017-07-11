@@ -19,8 +19,8 @@ class MatrixHelper:
 
     @staticmethod
     def fill_matrix_with_random(first_dimension: int, second_dimension: int,
-                                      start: int, stop: int):
-        return [[random.randint(-50, 50) for i in range(second_dimension)] for j in range(first_dimension)]
+                                start: int, stop: int):
+        return [[random.randint(start, stop) for i in range(second_dimension)] for j in range(first_dimension)]
 
     @staticmethod
     def concatenate(first_matrix: list, second_matrix: list, axis = 0):
@@ -601,14 +601,19 @@ class Practice:
             pylab.title('50x50 matrix')
             pylab.xlabel('№')
             pylab.ylabel('Execution time')
+
             pylab.plot(x_values, table.loc[0:49]['my as rows'], '#ff0000')
             my_rows_patch = patches.Patch(color = '#ff0000', label = 'my as rows')
+
             pylab.plot(x_values, table.loc[0:49]['my as columns'], '#00ff00')
             my_columns_patch = patches.Patch(color = '#00ff00', label = 'my as columns')
+
             pylab.plot(x_values, table.loc[0:49]['numpy as rows'], '#ff00ff')
             numpy_rows_patch = patches.Patch(color = '#ff00ff', label = 'numpy as rows')
+
             pylab.plot(x_values, table.loc[0:49]['numpy as columns'], '#0000ff')
             numpy_columns_patch = patches.Patch(color = '#0000ff', label = 'numpy as columns')
+
             pylab.legend(handles = [my_rows_patch, my_columns_patch, numpy_rows_patch, numpy_columns_patch])
             pylab.show()
 
@@ -618,14 +623,19 @@ class Practice:
             pylab.title('200x200 matrix')
             pylab.xlabel('№')
             pylab.ylabel('Execution time')
+
             pylab.plot(x_values, table.loc[50:99]['my as rows'], '#ff0000')
             my_rows_patch = patches.Patch(color = '#ff0000', label = 'my as rows')
+
             pylab.plot(x_values, table.loc[50:99]['my as columns'], '#00ff00')
             my_columns_patch = patches.Patch(color = '#00ff00', label = 'my as columns')
+
             pylab.plot(x_values, table.loc[50:99]['numpy as rows'], '#ff00ff')
             numpy_rows_patch = patches.Patch(color = '#ff00ff', label = 'numpy as rows')
+
             pylab.plot(x_values, table.loc[50:99]['numpy as columns'], '#0000ff')
             numpy_columns_patch = patches.Patch(color = '#0000ff', label = 'numpy as columns')
+
             pylab.legend(handles = [my_rows_patch, my_columns_patch, numpy_rows_patch, numpy_columns_patch])
             pylab.show()
 
@@ -635,17 +645,19 @@ class Practice:
             pylab.title('500x500 matrix')
             pylab.xlabel('№')
             pylab.ylabel('Execution time')
+
             pylab.plot(x_values, table.loc[100:149]['my as rows'], '#ff0000')
             my_rows_patch = patches.Patch(color = '#ff0000', label = 'my as rows')
+
             pylab.plot(x_values, table.loc[100:149]['my as columns'], '#00ff00')
             my_columns_patch = patches.Patch(color = '#00ff00', label = 'my as columns')
+
             pylab.plot(x_values, table.loc[100:149]['numpy as rows'], '#ff00ff')
             numpy_rows_patch = patches.Patch(color = '#ff00ff', label = 'numpy as rows')
+
             pylab.plot(x_values, table.loc[100:149]['numpy as columns'], '#0000ff')
             numpy_columns_patch = patches.Patch(color = '#0000ff', label = 'numpy as columns')
+
             pylab.legend(handles = [my_rows_patch, my_columns_patch, numpy_rows_patch, numpy_columns_patch])
             pylab.show()
 
-Practice.Part5.show_first_plot(Practice.Part5)
-Practice.Part5.show_second_plot(Practice.Part5)
-Practice.Part5.show_third_plot(Practice.Part5)
