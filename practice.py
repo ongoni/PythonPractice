@@ -528,7 +528,7 @@ class Practice:
             pylab.plot(x_values, y_values)
             pylab.show()
 
-        def final_task(self):
+        def get_operation_statistics(self):
             def get_my_concatenate_time(first_matrix: list, second_matrix: list, axis = 0):
                 start = time.time()
                 MatrixHelper.concatenate(first_matrix, second_matrix, axis = axis)
@@ -557,12 +557,12 @@ class Practice:
                 first.append(get_operation_time(50, 50))
             print(*first)
 
-            table = pandas.DataFrame({
-                'dimensions' : '50x50',
-                'numpy as columns' : [e[3] for e in first],
-                'my as columns' : [e[2] for e in first],
+            first_table = pandas.DataFrame({
+                'my as rows' : [e[0] for e in first],
                 'numpy as rows' : [e[1] for e in first],
-                'my as rows' : [e[0] for e in first]
+                'my as columns' : [e[2] for e in first],
+                'numpy as columns' : [e[3] for e in first],
+                'dimensions' : '50x50'
             })
 
             second = []
@@ -570,17 +570,27 @@ class Practice:
                 second.append(get_operation_time(200, 200))
             print(*second)
 
-            for e in second:
-                e.append('200x200')
-            table.append(pandas.DataFrame(second, columns = table.columns))
+            second_table = pandas.DataFrame({
+                'my as rows' : [e[0] for e in second],
+                'numpy as rows' : [e[1] for e in second],
+                'my as columns' : [e[2] for e in second],
+                'numpy as columns' : [e[3] for e in second],
+                'dimensions' : '200x200'
+            })
 
             third = []
             for i in range(50):
                 third.append(get_operation_time(500, 500))
             print(*third)
 
-            for e in third:
-                e.append('500x500')
-            table.append(pandas.DataFrame(third, columns = table.columns))
+            third_table = pandas.DataFrame({
+                'my as rows' : [e[0] for e in third],
+                'numpy as rows' : [e[1] for e in third],
+                'my as columns' : [e[2] for e in third],
+                'numpy as columns' : [e[3] for e in third],
+                'dimensions' : '500x500'
+            })
 
-Practice.Part5.final_task(Practice.Part5)
+            result = pandas.concat([first_table, second_table, third_table], ignore_index = True)
+            pandas.DataFrame(result).to_csv('statistics.csv')
+
