@@ -597,25 +597,37 @@ class Practice:
         def show_first_plot(self):
             table = pandas.read_csv('statistics.csv', index_col = 0)
             x_values = mlab.frange(1, 50, 1)
-            my_y_values = table.loc[0:49]['my as rows']
-            numpy_y_values = table.loc[0:49]['numpy as rows']
-            pylab.plot(x_values, my_y_values, x_values, numpy_y_values)
+            pylab.title('50x50 matrix')
+            pylab.xlabel('№')
+            pylab.ylabel('Execution time')
+            pylab.plot(x_values, table.loc[0:49]['my as rows'], '#ff0000')
+            pylab.plot(x_values, table.loc[0:49]['my as columns'], '#00ff00')
+            pylab.plot(x_values, table.loc[0:49]['numpy as rows'], '#ff00ff')
+            pylab.plot(x_values, table.loc[0:49]['numpy as columns'], '#0000ff')
             pylab.show()
 
         def show_second_plot(self):
             table = pandas.read_csv('statistics.csv', index_col=0)
             x_values = mlab.frange(51, 100, 1)
-            my_y_values = table.loc[50:99]['my as rows']
-            numpy_y_values = table.loc[50:99]['numpy as rows']
-            pylab.plot(x_values, my_y_values, x_values, numpy_y_values)
+            pylab.title('50x50 matrix')
+            pylab.xlabel('№')
+            pylab.ylabel('Execution time')
+            pylab.plot(x_values, table.loc[50:99]['my as rows'], '#ff0000')
+            pylab.plot(x_values, table.loc[50:99]['my as columns'], '#00ff00')
+            pylab.plot(x_values, table.loc[50:99]['numpy as rows'], '#ff00ff')
+            pylab.plot(x_values, table.loc[50:99]['numpy as columns'], '#0000ff')
             pylab.show()
 
         def show_third_plot(self):
             table = pandas.read_csv('statistics.csv', index_col=0)
             x_values = mlab.frange(101, 150, 1)
-            my_y_values = table.loc[100:149]['my as rows']
-            numpy_y_values = table.loc[100:149]['numpy as rows']
-            pylab.plot(x_values, my_y_values, x_values, numpy_y_values)
+            pylab.title('500x500 matrix')
+            pylab.xlabel('№')
+            pylab.ylabel('Execution time')
+            pylab.plot(x_values, table.loc[100:149]['my as rows'], '#ff0000')
+            pylab.plot(x_values, table.loc[100:149]['my as columns'], '#00ff00')
+            pylab.plot(x_values, table.loc[100:149]['numpy as rows'], '#ff00ff')
+            pylab.plot(x_values, table.loc[100:149]['numpy as columns'], '#0000ff')
             pylab.show()
 
 Practice.Part5.show_first_plot(Practice.Part5)
